@@ -1,7 +1,7 @@
 
 // props that the TextInput child component accepts from parent component
 export interface TextInputProps {
-  onTextChange: (text: string) => void;
+  onTextChange: (text: string) => void; //takes a call back
   placeholder?: string;
   initialValue?: string;
 }
@@ -9,10 +9,11 @@ export interface TextInputProps {
 
 // props that the StatsDisplay child component accepts from parent component
 export interface StatsDisplayProps {
-  stats: TextStats;
+  stats: TextStats;  // the 'stats' field whose type is data shape 'TextStats'
   showReadingTime?: boolean;
 }
 
+// data shape
 export interface TextStats {
   characterCount: number;
   wordCount: number;
