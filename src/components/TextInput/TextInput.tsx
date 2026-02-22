@@ -1,5 +1,5 @@
 import React from 'react';  //Imports the React library and it's required in any React component file.
-import { TextInputProps } from '../../types'; //Imports the 'TextInputProps' interface we just created in the types/index.ts file
+import type { TextInputProps } from '../../types'; //Imports the 'TextInputProps' interface we just created in the types/index.ts file
 
 // 'export' makes this component available to any other file that imports it elsewhere
 // 'const TextInput',  names the component

@@ -1,6 +1,6 @@
 import React from 'react'; //imports the React library
 
-import { StatsDisplayProps } from '../../types'; //imports the 'StatsDisplayProps' interface from our 'index.ts' file.
+import type { StatsDisplayProps } from '../../types'; //imports the 'StatsDisplayProps' interface from our 'index.ts' file.
 
 export const StatsDisplay: React.FC<StatsDisplayProps> = ({ //exports the component 'StatsDisplay', and tells TypeScript it's a 'function component' 
                                                             // that expects props matching 'StatsDisplayProps' interface from parent component 'CharacterCounter'.
@@ -17,7 +17,7 @@ showReadingTime = true  // it is 'optional' and defaults to 'true' IF the parent
                 <p className="text-sm text-gray-500">Characters</p> {/*displays the label "Characters"*/}
             </div>
 
-            //displays the stats of word count   
+            {/*displays the stats of word count*/}   
             <div className="text-center">
                 <p className="text-2xl font-bold text-blue-600"> {stats.wordCount}</p> {/*displays the stats.wordCount".*/}
                 <p className="text-sm text-gray-500">Words</p>  {/*displays the label "Words*/}
