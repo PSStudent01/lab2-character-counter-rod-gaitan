@@ -19,7 +19,7 @@ export interface StatsDisplayProps {
 export interface TextStats {
   characterCount: number;
   wordCount: number;
-  readingTime: string;  
+  readingTime: number;  
 }
 
 // props that the CharacterCounter child component accepts from parent component

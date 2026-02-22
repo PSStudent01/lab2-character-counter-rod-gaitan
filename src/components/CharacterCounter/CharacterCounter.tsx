@@ -39,7 +39,7 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
     const [stats, setStats] = useState<TextStats>({  
     characterCount: 0,
     wordCount: 0,
-    readingTime: '0:00'   
+    readingTime: '0:00'  
   });
 
     const handleTextChange = useCallback((text: string) => {  //This is the 'callback function' that will be passed down to 'TextInput'.
@@ -57,6 +57,7 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
                                  //'text.length' is a built-in JavaScript property that simply counts every character in the string including spaces.
       wordCount: words.length,  // .length gives how many words are in the 'words' array that we just created above.
       readingTime: `${Math.round((words.length / 200) * 100) /100}` //using the Math.round to round to the nearest whole number and shift teh decimal over 2 places. []
+      //readingTime: Math.round((words.length / 200) * 100) / 100 
         }); // closes the 'setStats' call 
   }, []); // closes the 'handleTextChange' function
   

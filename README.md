@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+lab2-character-counter-rod-gaitan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 
 
-Currently, two official plugins are available:
+Objective:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* This lab is a React TypeScript application that counts characters, words, and estimated reading time as you type.
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+# 
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Built With:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Vite Server:
+Install:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* off of my mod-9 folder:
+  -- \[npm create vite@latest lab2-character-counter-rod-gaitan -- --template react-ts]
+  -- \[Enter]
+  -- for 'Use Vite 8 beta (Experimental)?:' \[NO]
+  -- for 'Install with npm and start now?' \[YES]
+* Open browser to 'http://localhost:5173'
+
+Optional:
+
+* if 'node\_modules' folder that contains dependencies was NOT installed:
+  -- \[cd lab2-character-counter-rod-gaitan]
+  -- \[npm install]
+
+To Stop Vite Server:
+
+* \[Ctrl + c]
+
+To Run Vite Server:
+
+* \[cd lab2-character-counter-rod-gaitan]
+* \[npm run dev]
+* Open your browser to 'http://localhost:5173'
+
+
+
+# 
+
+How to Use:
+
+* Just start typing in the text area and the statistics will update in real time providing the following output:
+  -- the character count total, including spaces.
+  -- the word count total.
+  -- measurement of reading time in minutes.
+
+
+
+# 
+
+Components:
+
+* TextInput =
+  -- handles user input
+  -- and then sends those changes to 'CharacterCounter' via 'callback'
+* CharacterCounter = is parent component that...
+  -- manages the state of the 'stats' object  
+  --- characterCount
+  --- wordCount
+  --- readingTime
+  -- and passes data to its child components (TextInput, StatsDisplay) in the form of props.
+* StatsDisplay =
+  -- receives data from 'CharacterCounter' component
+  -- and then displays them on the webpage
+
+
+
+# 
+
+Component Props:
+
+* TextInput Component:
+  -- onTextChange	= function / required
+  -- placeholder = string / optional
+  -- initialValue	= string /optional
+* StatsDisplay Component:
+  -- showReadingTime = boolean / optional
+  -- minWords = number / optional
+  -- maxWords = number / optional
+* CharacterCounter Component:
+  -- minWords = number / optional
+  -- maxWords = number / optional
+  -- targetReadingTime = number / optional  
