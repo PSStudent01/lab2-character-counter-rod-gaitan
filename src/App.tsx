@@ -1,4 +1,4 @@
-import React from 'react'; //Imports React 
+//import React from 'react'; //Imports React 
 import { CharacterCounter } from './components/CharacterCounter/CharacterCounter'; //imports the 'CharacterCounter' component.
 
 function App() {    //this define the 'App' component, the root component of the entire application

@@ -27,7 +27,6 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
                                                                     // ...props object ('CharacterCounterProps' interface)):
   minWords = 0,          
   maxWords = 100,
-  targetReadingTime = 1
 
 }) => {               // This closes the 'props destructuring' and 'opens the component function body'.
 
