@@ -44,7 +44,8 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
 
     const handleTextChange = (text: string) => {  //This is the 'callback function' that will be passed down to 'TextInput'.
                                                   // It receives text — the current full string from the textarea — as its argument every time the user types.
-    const words = text.trim() === '' ? [] : text.trim() //calculates the word array
+    // const words = text.trim() === '' ? [] : text.trim() //calculates the word array      split(/\s+/)
+    const words = text.trim() === '' ? [] : text.trim().split(/\s+/) //'split(/\s+/)' properly categorizes a group of letters into words and generates a count for each group
     /* 
     - 'text.trim()' removes leading/trailing spaces from the text.
     - === ''  checks if the text is empty after trimming

@@ -11,22 +11,22 @@ showReadingTime = true  // it is 'optional' and defaults to 'true' IF the parent
 }) => {  //this closes the 'props destructuring'....
     return(  //starts the JSX for the UI
         <div className="grid grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg"> {/*wrapper 'div' that uses Tailwind to style the main container includiing a 3-column grid layout.*/}
-            //displays the character count:
+            {/*displays the character count:*/}
             <div className="text-center">
-                <p className="text-2xl font-bold text-blue-600">{stats.characterCount}</p> {/*extracts the value from the 'stats' object passed in from the parent component 'CharacterCounter'. shows the number in blue*/}
+                <p className="text-2xl font-bold text-black-600">{stats.characterCount}</p> {/*extracts the value from the 'stats' object passed in from the parent component 'CharacterCounter'. shows the number in red*/}
                 <p className="text-sm text-gray-500">Characters</p> {/*displays the label "Characters"*/}
             </div>
 
             {/*displays the stats of word count*/}   
             <div className="text-center">
-                <p className="text-2xl font-bold text-blue-600"> {stats.wordCount}</p> {/*displays the stats.wordCount".*/}
+                <p className="text-2xl font-bold text-red-600"> {stats.wordCount}</p> {/*displays the stats.wordCount".*/}
                 <p className="text-sm text-gray-500">Words</p>  {/*displays the label "Words*/}
             </div>
             {showReadingTime && (   //  'conditional rendering' where the '&&' means "only render what follows IF 'showReadingTime' is true." 
                                     // else if false, nothing renders here at all.
             //what follows:
             <div className="text-center">
-                <p className="text-2xl font-bold text-blue-600">{stats.readingTime}</p> {/* displays 'stats.readingTime'*/}
+                <p className="text-2xl font-bold text-black-600">{stats.readingTime}</p> {/* displays 'stats.readingTime'*/}
                 <p className="text-sm text-gray-500">Min Read</p> {/*displays label "Min Read */}
             </div>
             // AGAIN, this whole block only appears if 'showReadingTime' is true, else it does not.
