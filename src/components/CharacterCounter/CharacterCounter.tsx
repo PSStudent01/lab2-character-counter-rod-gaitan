@@ -1,8 +1,9 @@
 
 /*
 - Imports 'React' AND the 'useState hook' from the 'React library'. 
-- The 'useState hook' is necessary here, because this component (CHaracterCounter) manages state, whereas the other 2 do not.*/
-import React, { useState } from 'react';
+- The 'useState hook' is necessary here, because this component (CHaracterCounter) manages state, whereas the other 2 do not.
+- also 'useCallback' is needed to be able to wrap */
+import React, { useState, useCallback } from 'react';
 
 /*
 - This imports 2 things from our 'index.tsx' file:
@@ -20,7 +21,7 @@ import type { CharacterCounterProps, TextStats } from '../../types';
 import { TextInput } from '../TextInput/TextInput';
 import { StatsDisplay } from '../StatsDisplay/StatsDisplay';
 
-// exports the component (itself 'CharacterCounter') 
+// exports the component (itself 'CharacterCounter') ]
 // and tells 'TypeScript' it expects 'prop's matching 3 optional 'CharacterCounterProps'.
 export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 'destructing of the 3 props'(extracting each prop from the 
                                                                     // ...props object ('CharacterCounterProps' interface)):
@@ -39,10 +40,10 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
     const [stats, setStats] = useState<TextStats>({  
     characterCount: 0,
     wordCount: 0,
-    readingTime: 0    
+    readingTime: '0:00'   
   });
 
-    const handleTextChange = (text: string) => {  //This is the 'callback function' that will be passed down to 'TextInput'.
+    const handleTextChange = useCallback((text: string) => {  //This is the 'callback function' that will be passed down to 'TextInput'.
                                                   // It receives text — the current full string from the textarea — as its argument every time the user types.
     // const words = text.trim() === '' ? [] : text.trim() //calculates the word array      split(/\s+/)
     const words = text.trim() === '' ? [] : text.trim().split(/\s+/) //'split(/\s+/)' properly categorizes a group of letters into words and generates a count for each group
@@ -56,10 +57,10 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
       characterCount: text.length, // it calls 'setStats' to update the 'state' with 'new values'. 
                                  //'text.length' is a built-in JavaScript property that simply counts every character in the string including spaces.
       wordCount: words.length,  // .length gives how many words are in the 'words' array that we just created above.
-      readingTime: Math.round((words.length / 200) * 100) //using the Math.round to round to the nearest whole number and shift teh decimal over 2 places. []
-
+      readingTime: `${Math.round((words.length / 200) * 100) /100}` //using the Math.round to round to the nearest whole number and shift teh decimal over 2 places. []
         }); // closes the 'setStats' call 
-  };   // closes the 'handleTextChange' function
+  }, []); // closes the 'handleTextChange' function
+  
 
 
   return (
@@ -68,11 +69,10 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({ // below is 
     <TextInput onTextChange={handleTextChange} /> {/* a CALL BACK pattern where
                                                     - it passes 'handleTextChange' value as the 'onTextChange prop'. 
                                                     - then 'TextInput' component will call this function every time the user types, sending the text back up to 'CharacterCounter'.*/}
-    <StatsDisplay stats={stats} /> {/* this line 
+    <StatsDisplay stats={stats} minWords={minWords} maxWords={maxWords} /> {/* this line 
                                     - renders the 'StatsDisplay' child component 
                                     - and passes the active 'stats state object' down to 'StatsDisplay' child component . 
                                     - so that very time 'setStats' updates the 'state', this will automatically re-render with the new numbers.*/}
     </div>
   );
 };
-

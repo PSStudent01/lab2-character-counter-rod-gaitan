@@ -11,13 +11,15 @@ export interface TextInputProps {
 export interface StatsDisplayProps {
   stats: TextStats;  // the 'stats' field whose type is data shape 'TextStats'
   showReadingTime?: boolean;
+  minWords?: number;  // adding 'minWords' prop STEP 1
+  maxWords?: number;  // adding 'maxWords' prop STEP1
 }
 
 // data shape
 export interface TextStats {
   characterCount: number;
   wordCount: number;
-  readingTime: number; // in minutes
+  readingTime: string;  
 }
 
 // props that the CharacterCounter child component accepts from parent component
